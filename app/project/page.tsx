@@ -25,8 +25,8 @@ const projects: Project[] = [
     titleKo: "엉클",
     titleEn: "Uncle",
     fields: [
-      { label: "감독", value: "홍길동" },
-      { label: "출연", value: "김길동, 박길동" },
+      { label: "감독", value: "김형협" },
+      { label: "출연", value: "고수, 김해숙" },
     ],
     images: ["/un.png", "/un2.png"],
   },

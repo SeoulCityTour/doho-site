@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import IntroAnimation from "./components/IntroAnimation";
 
 type FilmSection2 = {
   image: string;
@@ -8,6 +9,7 @@ type FilmSection2 = {
   heading: string[];
   cta: string;
   href: string;
+  credit?: string;
   releaseYear?: string;
   genre?: string;
   runtime?: string;
@@ -32,6 +34,7 @@ const films: Film[] = [
       heading: ["치악산 Mount CHIAK"],
       cta: "PHOTO",
       href: "#",
+      credit: "제공/제작",
       releaseYear: "2023",
       genre: "공포 미스터리",
       runtime: "85분",
@@ -49,6 +52,7 @@ const films: Film[] = [
       heading: ["돌핀보이 Dolphin Boy"],
       cta: "PHOTO",
       href: "#",
+      credit: "수입",
       releaseYear: "2026.06.03.",
       genre: "애니메이션",
       synopsis:
@@ -65,6 +69,7 @@ const films: Film[] = [
       heading: ["나를 모르는 그녀의 세계에서 My Beloved Stranger"],
       cta: "PHOTO",
       href: "#",
+      credit: "공동제공",
       releaseYear: "2025.05.22.",
       genre: "멜로/로맨스",
       synopsis:
@@ -74,63 +79,32 @@ const films: Film[] = [
 ];
 
 const AUTO_SLIDE_INTERVAL = 3500;
-const INTRO_DURATION = 1800; // 인트로 화면이 자동으로 사라지기까지 걸리는 시간(ms)
+
+// 브라우저 메모리에만 존재하는 변수라서, 진짜 새로고침(F5)을 하면 자바스크립트가
+// 처음부터 다시 로드되며 자동으로 false로 초기화됨.
+// 반면 "Works" 클릭처럼 사이트 내에서 페이지만 이동하는 경우(리액트 클라이언트
+// 라우팅)에는 자바스크립트가 다시 로드되지 않으므로 이 값이 그대로 유지되어
+// 인트로가 다시 뜨지 않음.
+let introShownThisLoad = false;
 
 export default function Home() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [hoverIndex, setHoverIndex] = useState<number | null>(null);
   const [selectedIndex, setSelectedIndex] = useState(0);
 
-  const [showIntro, setShowIntro] = useState(true);
-  const [introLeaving, setIntroLeaving] = useState(false);
-  const [introFrame, setIntroFrame] = useState(0);
-  const [introPlay, setIntroPlay] = useState(false);
+  const [showIntro, setShowIntro] = useState(false);
+  const [introChecked, setIntroChecked] = useState(false);
 
-  // 새로고침 시 히드레이션/이미지 디코딩이 한번에 몰려 메인 스레드가 멈칫하면
-  // CSS 애니메이션(벽시계 기준)이 이미 지나가버려 순간이동처럼 보이는 문제 방지.
-  // 브라우저가 한 번 그리고 안정된 다음 프레임에 애니메이션을 시작시킴.
   useEffect(() => {
-    let raf2 = 0;
-    const raf1 = requestAnimationFrame(() => {
-      raf2 = requestAnimationFrame(() => setIntroPlay(true));
-    });
-    return () => {
-      cancelAnimationFrame(raf1);
-      if (raf2) cancelAnimationFrame(raf2);
-    };
+    if (!introShownThisLoad) {
+      setShowIntro(true);
+    }
+    setIntroChecked(true);
   }, []);
 
-  useEffect(() => {
-    if (!showIntro) return;
-    const id = setInterval(() => setIntroFrame((f) => f + 1), 40); // 25fps
-    return () => clearInterval(id);
-  }, [showIntro]);
-
-  const formatTimecode = (frames: number) => {
-    const totalSeconds = Math.floor(frames / 25);
-    const ff = frames % 25;
-    const mm = Math.floor(totalSeconds / 60);
-    const ss = totalSeconds % 60;
-    const pad = (n: number) => n.toString().padStart(2, "0");
-    return `00:${pad(mm)}:${pad(ss)}:${pad(ff)}`;
-  };
-
-  useEffect(() => {
-    if (!introPlay) return;
-    const leaveTimer = setTimeout(() => setIntroLeaving(true), INTRO_DURATION);
-    const removeTimer = setTimeout(
-      () => setShowIntro(false),
-      INTRO_DURATION + 650
-    );
-    return () => {
-      clearTimeout(leaveTimer);
-      clearTimeout(removeTimer);
-    };
-  }, [introPlay]);
-
-  const handleSkipIntro = () => {
-    setIntroLeaving(true);
-    setTimeout(() => setShowIntro(false), 650);
+  const handleIntroComplete = () => {
+    introShownThisLoad = true;
+    setShowIntro(false);
   };
 
   useEffect(() => {
@@ -163,239 +137,8 @@ export default function Home() {
 
   return (
     <main className="w-full">
-      {showIntro && (
-        <div
-          onClick={handleSkipIntro}
-          className={`fixed inset-0 z-[100] flex cursor-pointer flex-col bg-black text-white transition-all duration-[600ms] ease-[cubic-bezier(0.65,0,0.35,1)] ${
-            introLeaving
-              ? "pointer-events-none scale-105 opacity-0 blur-sm"
-              : "scale-100 opacity-100 blur-0"
-          }`}
-        >
-          {/* shutter flash - 찰칵 */}
-          <div
-            className="pointer-events-none absolute inset-0 bg-white"
-            style={{
-              opacity: 0,
-              animation: introPlay
-                ? `shutter-flash 350ms 240ms ease-out both`
-                : "none",
-            }}
-          />
-
-          {/* outer frame corners */}
-          <div className="absolute left-4 top-4 h-14 w-14 border-l-2 border-t-2 border-white/70 sm:left-8 sm:top-8 sm:h-20 sm:w-20" />
-          <div className="absolute right-4 top-4 h-14 w-14 border-r-2 border-t-2 border-white/70 sm:right-8 sm:top-8 sm:h-20 sm:w-20" />
-          <div className="absolute bottom-4 left-4 h-14 w-14 border-b-2 border-l-2 border-white/70 sm:bottom-8 sm:left-8 sm:h-20 sm:w-20" />
-          <div className="absolute bottom-4 right-4 h-14 w-14 border-b-2 border-r-2 border-white/70 sm:bottom-8 sm:right-8 sm:h-20 sm:w-20" />
-
-          {/* top-left REC */}
-          <div className="absolute left-8 top-8 flex items-center gap-2 sm:left-14 sm:top-12">
-            <span className="h-2.5 w-2.5 animate-pulse rounded-full bg-red-600 sm:h-3 sm:w-3" />
-            <span className="text-sm font-bold tracking-widest sm:text-base">
-              REC
-            </span>
-          </div>
-
-          {/* top-right HD / 4K / 25FPS / battery */}
-          <div className="absolute right-8 top-8 flex items-center gap-2 text-[10px] font-bold tracking-wider sm:right-14 sm:top-12 sm:text-xs">
-            <span className="border border-white/70 px-1.5 py-0.5">HD</span>
-            <span className="border border-white/70 px-1.5 py-0.5">4K</span>
-            <span>25FPS</span>
-            <span className="ml-1 flex items-center gap-1">
-              <span className="relative h-3 w-6 border border-white/70 sm:h-3.5 sm:w-7">
-                <span className="absolute inset-y-[1.5px] left-[1.5px] right-[3px] bg-green-500" />
-              </span>
-              99%
-            </span>
-          </div>
-
-          {/* center focus marker + logo */}
-          <div className="relative flex flex-1 items-center justify-center">
-            <div className="relative flex h-64 w-64 items-center justify-center sm:h-80 sm:w-80">
-              <div
-                className="absolute left-0 top-0 h-7 w-7 border-l-2 border-t-2 border-white/70 sm:h-9 sm:w-9"
-                style={{
-                  opacity: 0,
-                  animation: introPlay ? `bracket-snap 240ms ease-out both` : "none",
-                }}
-              />
-              <div
-                className="absolute right-0 top-0 h-7 w-7 border-r-2 border-t-2 border-white/70 sm:h-9 sm:w-9"
-                style={{
-                  opacity: 0,
-                  animation: introPlay ? `bracket-snap 240ms ease-out both` : "none",
-                }}
-              />
-              <div
-                className="absolute bottom-0 left-0 h-7 w-7 border-b-2 border-l-2 border-white/70 sm:h-9 sm:w-9"
-                style={{
-                  opacity: 0,
-                  animation: introPlay ? `bracket-snap 240ms ease-out both` : "none",
-                }}
-              />
-              <div
-                className="absolute bottom-0 right-0 h-7 w-7 border-b-2 border-r-2 border-white/70 sm:h-9 sm:w-9"
-                style={{
-                  opacity: 0,
-                  animation: introPlay ? `bracket-snap 240ms ease-out both` : "none",
-                }}
-              />
-
-              <span
-                className="absolute text-xl font-light text-white/70 sm:text-2xl"
-                style={{
-                  animation: introPlay
-                    ? `crosshair-snap 240ms ease-out forwards`
-                    : "none",
-                }}
-              >
-                +
-              </span>
-
-              <div
-                className="relative flex flex-col items-center justify-center gap-2 px-4 text-center"
-                style={{
-                  opacity: 0,
-                  animation: introPlay
-                    ? `logo-snap 300ms 240ms cubic-bezier(0.22,1,0.36,1) both`
-                    : "none",
-                }}
-              >
-                <div
-                  className="text-3xl font-extrabold tracking-[0.05em] text-white sm:text-4xl"
-                  style={{
-                    fontFamily: "'AritaDotum', sans-serif",
-                    display: "inline-block",
-                    animation: introPlay
-                      ? `doho-emphasis 550ms 540ms ease-out both`
-                      : "none",
-                  }}
-                >
-                  DOHO
-                </div>
-                <div className="text-[11px] font-semibold uppercase tracking-[0.15em] text-white/90 sm:text-sm">
-                  Path to a Wider, Immersive World.
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* bottom timecode */}
-          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-center sm:bottom-12">
-            <span className="text-xs font-bold tabular-nums tracking-[0.2em] sm:text-sm">
-              {formatTimecode(introFrame)}
-            </span>
-            <div className="mt-2 h-[2px] w-28 overflow-hidden bg-white/15 sm:w-32">
-              <div
-                className="h-full bg-white"
-                style={{
-                  width: introPlay ? undefined : "0%",
-                  animation: introPlay
-                    ? `intro-bar ${INTRO_DURATION}ms linear forwards`
-                    : "none",
-                }}
-              />
-            </div>
-            <span className="mt-2 block text-[9px] tracking-[0.3em] text-white/40">
-              CLICK TO SKIP
-            </span>
-          </div>
-
-          {/* bottom-right menu */}
-          <div className="absolute bottom-8 right-8 flex items-center gap-1.5 text-xs font-bold tracking-widest sm:bottom-12 sm:right-14">
-            MENU
-            <span className="flex flex-col gap-[3px]">
-              <span className="block h-[2px] w-4 bg-white" />
-              <span className="block h-[2px] w-4 bg-white" />
-              <span className="block h-[2px] w-4 bg-white" />
-            </span>
-          </div>
-
-          <style jsx>{`
-            @keyframes intro-bar {
-              from {
-                width: 0%;
-              }
-              to {
-                width: 100%;
-              }
-            }
-
-            @keyframes shutter-flash {
-              0% {
-                opacity: 0;
-              }
-              12% {
-                opacity: 1;
-              }
-              100% {
-                opacity: 0;
-              }
-            }
-
-            @keyframes logo-snap {
-              0% {
-                transform: scale(1.25);
-                opacity: 0;
-              }
-              55% {
-                transform: scale(0.95);
-                opacity: 1;
-              }
-              100% {
-                transform: scale(1);
-                opacity: 1;
-              }
-            }
-
-            @keyframes doho-emphasis {
-              0% {
-                transform: scale(1);
-                text-shadow: 0 0 0 rgba(255, 255, 255, 0);
-              }
-              45% {
-                transform: scale(1.16);
-                text-shadow: 0 0 22px rgba(255, 255, 255, 0.9),
-                  0 0 46px rgba(255, 255, 255, 0.45);
-              }
-              100% {
-                transform: scale(1);
-                text-shadow: 0 0 0 rgba(255, 255, 255, 0);
-              }
-            }
-
-            @keyframes crosshair-snap {
-              0% {
-                opacity: 1;
-                transform: scale(1);
-              }
-              70% {
-                opacity: 1;
-                transform: scale(1);
-              }
-              100% {
-                opacity: 0;
-                transform: scale(1.3);
-              }
-            }
-
-            @keyframes bracket-snap {
-              0% {
-                transform: scale(1.6);
-                opacity: 0;
-              }
-              60% {
-                transform: scale(0.95);
-                opacity: 1;
-              }
-              100% {
-                transform: scale(1);
-                opacity: 1;
-              }
-            }
-          `}</style>
-        </div>
+      {introChecked && showIntro && (
+        <IntroAnimation onComplete={handleIntroComplete} />
       )}
 
       <section className="relative flex w-full flex-col justify-between overflow-hidden bg-[#141210] text-white md:h-screen">
@@ -598,11 +341,13 @@ export default function Home() {
               ))}
             </h2>
 
-            {(selectedFilm.section2.releaseYear ||
+            {(selectedFilm.section2.credit ||
+              selectedFilm.section2.releaseYear ||
               selectedFilm.section2.genre ||
               selectedFilm.section2.runtime) && (
               <p className="mt-4 flex flex-wrap items-center gap-x-2 text-sm font-medium tracking-wide text-black/60 md:text-base">
                 {[
+                  selectedFilm.section2.credit,
                   selectedFilm.section2.releaseYear,
                   selectedFilm.section2.genre,
                   selectedFilm.section2.runtime,

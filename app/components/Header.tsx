@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 
 const menuItems = [
   { label: "WORKS", href: "/" },
@@ -60,14 +61,15 @@ export default function Header() {
 
           <nav className="flex flex-1 flex-col items-start justify-center gap-4 px-6 md:px-10">
             {menuItems.map((item) => (
-              <a
+              <Link
                 key={item.label}
                 href={item.href}
+                onClick={() => setMenuOpen(false)}
                 className="text-[9vw] font-extrabold uppercase leading-[1.05] tracking-tight transition-opacity hover:opacity-60 sm:text-5xl md:text-6xl"
                 style={{ fontFamily: "'AritaDotum', sans-serif" }}
               >
                 {item.label}
-              </a>
+              </Link>
             ))}
           </nav>
 
