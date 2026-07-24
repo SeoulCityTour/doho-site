@@ -1,7 +1,7 @@
 "use client";
 
 export default function Contact() {
-  const email = "jureumgyeol@gmail.com";
+  const email = "dohoenter@naver.com";
   const address = "서울특별시 종로구 인사동 194-4 하나로빌딩 507호";
   const mapSrc =
     "https://www.google.com/maps?q=" +

@@ -12,12 +12,13 @@ export default function Footer() {
     <footer className="flex w-full flex-col gap-16 bg-white px-6 py-16 text-black md:gap-24 md:px-10 md:py-24">
       <div>
         <div className="mb-4 flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
-          <div className="relative h-10 w-32 sm:h-12 md:h-16">
+          <div className="relative h-12 w-40 sm:h-14 sm:w-48 md:h-20 md:w-56">
             <Image
               src="/logo3.png"
               alt="도호 엔터테인먼트"
               fill
-              className="object-contain"
+              sizes="(max-width: 768px) 160px, 224px"
+              className="object-contain object-left"
             />
           </div>
 
@@ -43,8 +44,11 @@ export default function Footer() {
 
         <div className="flex flex-col gap-2 text-xs tracking-widest text-black/40">
           <span>© 2026 (주)도호엔터테인먼트</span>
-          <span className="text-[10px] tracking-normal text-black/30">
-            이 사이트는 아리따 돋움(AritaDotum) 폰트를 사용하고 있습니다.
+          <span
+            className="text-[10px] tracking-normal text-black/30"
+            style={{ fontFamily: "'AritaDotum', sans-serif" }}
+          >
+            이 사이트는 아리따 돋움(AritaDotum), Helvetica 폰트를 사용하고 있습니다.
           </span>
         </div>
       </div>
