@@ -33,9 +33,16 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
+    images: [`${baseUrl}/logo3.png`],
   },
   icons: {
     icon: "/favicon.ico",
+  },
+  verification: {
+    google: "여기에_구글_인증코드_붙여넣기",
+    other: {
+      "naver-site-verification": ["여기에_네이버_인증코드_붙여넣기"],
+    },
   },
 };
 

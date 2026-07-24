@@ -158,7 +158,7 @@ export default function IntroAnimation({ onComplete }: IntroAnimationProps) {
             <div
               className="text-3xl font-extrabold tracking-[0.05em] text-white sm:text-4xl"
               style={{
-                fontFamily: "'AritaDotum', sans-serif",
+                fontFamily: "'HelveticaCustom', sans-serif",
                 display: "inline-block",
                 animation: introPlay
                   ? `doho-emphasis 550ms 540ms ease-out both`
@@ -167,7 +167,10 @@ export default function IntroAnimation({ onComplete }: IntroAnimationProps) {
             >
               DOHO
             </div>
-            <div className="text-[11px] font-semibold uppercase tracking-[0.15em] text-white/90 sm:text-sm">
+            <div
+              className="text-[11px] font-semibold uppercase tracking-[0.15em] text-white/90 sm:text-sm"
+              style={{ fontFamily: "'HelveticaCustom', sans-serif" }}
+            >
               Path to a Wider, Immersive World.
             </div>
           </div>
@@ -192,16 +195,6 @@ export default function IntroAnimation({ onComplete }: IntroAnimationProps) {
         </div>
         <span className="mt-2 block text-[9px] tracking-[0.3em] text-white/40">
           CLICK TO SKIP
-        </span>
-      </div>
-
-      {/* bottom-right menu */}
-      <div className="absolute bottom-8 right-8 flex items-center gap-1.5 text-xs font-bold tracking-widest sm:bottom-12 sm:right-14">
-        MENU
-        <span className="flex flex-col gap-[3px]">
-          <span className="block h-[2px] w-4 bg-white" />
-          <span className="block h-[2px] w-4 bg-white" />
-          <span className="block h-[2px] w-4 bg-white" />
         </span>
       </div>
 

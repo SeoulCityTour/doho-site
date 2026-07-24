@@ -27,6 +27,10 @@ export default function Footer() {
                 <Link
                   href={link.href}
                   className="text-sm font-medium tracking-wide text-black/60 transition-colors hover:text-black"
+                  style={{
+                    fontFamily:
+                      "'HelveticaCustom', Helvetica, Arial, sans-serif",
+                  }}
                 >
                   {link.label}
                 </Link>

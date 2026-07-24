@@ -23,7 +23,7 @@ export default function Contact() {
             href={`mailto:${email}`}
             className="group flex items-center gap-3 text-base tracking-tight text-white/90 transition-colors hover:text-white sm:text-lg md:text-xl"
             style={{
-              fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif",
+              fontFamily: "'HelveticaCustom', sans-serif",
             }}
           >
             {email}

@@ -185,7 +185,10 @@ export default function Home() {
                   >
                     {film.title}
                   </a>
-                  <span className="translate-y-[-0.6em] text-xs font-medium tracking-widest text-white/70 md:text-sm">
+                  <span
+                    className="translate-y-[-0.6em] text-xs font-medium tracking-widest text-white/70 md:text-sm"
+                    style={{ fontFamily: "'AritaDotum', sans-serif" }}
+                  >
                     {film.year}
                   </span>
                 </li>
@@ -255,7 +258,10 @@ export default function Home() {
                       >
                         {film.title}
                       </a>
-                      <span className="translate-y-[-0.4em] text-[10px] font-medium tracking-widest text-white/70">
+                      <span
+                        className="translate-y-[-0.4em] text-[10px] font-medium tracking-widest text-white/70"
+                        style={{ fontFamily: "'AritaDotum', sans-serif" }}
+                      >
                         {film.year}
                       </span>
                     </li>
@@ -377,6 +383,7 @@ export default function Home() {
           <a
             href={selectedFilm.section2.href}
             className="group mt-8 flex items-center gap-4 text-sm font-bold tracking-widest"
+            style={{ fontFamily: "'HelveticaCustom', sans-serif" }}
           >
             <span className="transition-transform duration-300 group-hover:translate-x-2">
               <svg

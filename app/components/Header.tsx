@@ -43,6 +43,7 @@ export default function Header() {
               type="button"
               onClick={() => setMenuOpen(false)}
               className="flex items-center gap-3 text-xs font-semibold tracking-[0.25em]"
+              style={{ fontFamily: "'HelveticaCustom', sans-serif" }}
             >
               <svg
                 width="18"
@@ -66,7 +67,7 @@ export default function Header() {
                 href={item.href}
                 onClick={() => setMenuOpen(false)}
                 className="text-[9vw] font-extrabold uppercase leading-[1.05] tracking-tight transition-opacity hover:opacity-60 sm:text-5xl md:text-6xl"
-                style={{ fontFamily: "'AritaDotum', sans-serif" }}
+                style={{ fontFamily: "'HelveticaCustom', sans-serif" }}
               >
                 {item.label}
               </Link>

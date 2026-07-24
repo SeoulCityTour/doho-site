@@ -121,7 +121,7 @@ export default function ProjectPage() {
             className={direction === 1 ? "slide-in-right" : "slide-in-left"}
           >
             <p className="flex flex-wrap items-baseline gap-2 text-xl font-extrabold tracking-tight sm:text-2xl md:text-3xl">
-              <span style={{ fontFamily: "'AritaDotum', sans-serif" }}>
+              <span style={{ fontFamily: "'HelveticaCustom', sans-serif" }}>
                 {selected.statusEn}
               </span>
               <span style={{ fontFamily: "'AritaDotum', sans-serif" }}>
