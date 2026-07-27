@@ -79,7 +79,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return ( 
+  return (  
     <html
       lang="ko"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
@@ -95,4 +95,4 @@ export default function RootLayout({
       </body>
     </html>
   );
-}
+} 
