@@ -13,6 +13,8 @@ type FilmSection2 = {
   releaseYear?: string;
   genre?: string;
   runtime?: string;
+  director?: string;
+  cast?: string;
   synopsis?: string;
 };
 
@@ -32,14 +34,16 @@ const films: Film[] = [
       image: "/chiaksan.jpg",
       label: "",
       heading: ["치악산 Mount CHIAK"],
-      cta: "PHOTO",
+      cta: "Photos",
       href: "#",
       credit: "제공/제작",
       releaseYear: "2023",
       genre: "공포 미스터리",
       runtime: "85분",
+      director: "김선웅",
+      cast: "윤균상, 김예원",
       synopsis:
-        "산악바이크 동아리 ‘산가자’의 리더 ‘민준’(윤균상)과 팀원들은 라이딩 영상을 촬영하기 위해 치악산으로 향한다. ‘민준’의 사촌 동생, ‘현지’(김예원) 아버지의 산장에 머물게 된 이들은 40년 전 ‘현지’ 아버지가 치악산에서 실종되었다는 사실을 알게 되고 그날 밤부터 팀원 ‘양배’(연제욱), ‘수아’(배그린), ‘이삭’(이태환)을 비롯한 모두에게 정체를 알 수 없는 기이한 일들이 벌어지는데 ……",
+        "산악바이크 동아리 '산가자'의 리더 '민준'(윤균상)과 팀원들은 라이딩 영상을 촬영하기 위해 치악산으로 향한다. '민준'의 사촌 동생, '현지'(김예원) 아버지의 산장에 머물게 된 이들은 40년 전 '현지' 아버지가 치악산에서 실종되었다는 사실을 알게 되고 그날 밤부터 팀원 '양배'(연제욱), '수아'(배그린), '이삭'(이태환)을 비롯한 모두에게 정체를 알 수 없는 기이한 일들이 벌어지는데 ……",
     },
   },
   {
@@ -50,13 +54,15 @@ const films: Film[] = [
       image: "/dolphinboy.jpg",
       label: "",
       heading: ["돌핀보이 Dolphin Boy"],
-      cta: "PHOTO",
+      cta: "Photos",
       href: "#",
       credit: "수입",
       releaseYear: "2026.06.03.",
       genre: "애니메이션",
+      runtime: "86분",
+      director: "모하마드 케이란디시",
       synopsis:
-        "“우린 함께일 때 가장 강해!” 돌고래 가족의 보살핌 속에 바다의 히어로로 성장한 ‘돌핀보이’. 어느 날, 극적으로 만난 아빠가 바다를 차지하려는 악당에게 납치당하는 사건이 발생한다. 돌핀보이는 단짝 친구인 돌고래 ‘스노우볼’, 반전 매력 상어 ‘샤키’ 등 바닷속 친구들과 함께 아빠를 구하고 바다를 지키기 위해 커다란 게 몬스터가 사는 괴물섬으로 환상적인 모험을 떠난다. 바다와 인간 세계를 넘나드는 가슴 벅찬 어드벤처가 펼쳐진다!",
+        "\"우린 함께일 때 가장 강해!\" 돌고래 가족의 보살핌 속에 바다의 히어로로 성장한 '돌핀보이'. 어느 날, 극적으로 만난 아빠가 바다를 차지하려는 악당에게 납치당하는 사건이 발생한다. 돌핀보이는 단짝 친구인 돌고래 '스노우볼', 반전 매력 상어 '샤키' 등 바닷속 친구들과 함께 아빠를 구하고 바다를 지키기 위해 커다란 게 몬스터가 사는 괴물섬으로 환상적인 모험을 떠난다. 바다와 인간 세계를 넘나드는 가슴 벅찬 어드벤처가 펼쳐진다!",
     },
   },
   {
@@ -67,13 +73,16 @@ const films: Film[] = [
       image: "/unknown-world.jpg",
       label: "",
       heading: ["나를 모르는 그녀의 세계에서 My Beloved Stranger"],
-      cta: "PHOTO",
+      cta: "Photos",
       href: "#",
       credit: "공동제공",
       releaseYear: "2025.05.22.",
       genre: "멜로/로맨스",
+      runtime: "122분",
+      director: "미키 타카히로",
+      cast: "나카지마 켄토, 미레이",
       synopsis:
-        "어느 날, 눈을 뜨자 우리가 사랑한 모든 시간이 사라졌다. 베스트셀러 작가 ‘리쿠’는 8년을 함께한 첫사랑 ‘미나미’와 모르는 사이가 되어버린 낯선 세계에서 깨어난다. 너였기에, 빛나던 우리의 세계. 너였기에, 난 사랑을 할 수 있었어... 잃고 싶지 않는 그녀를 다시 되찾기 위해 시간을 넘어 여기, 다시 시작되는 우리의 평행세계 로맨스",
+        "어느 날, 눈을 뜨자 우리가 사랑한 모든 시간이 사라졌다. 베스트셀러 작가 '리쿠'는 8년을 함께한 첫사랑 '미나미'와 모르는 사이가 되어버린 낯선 세계에서 깨어난다. 너였기에, 빛나던 우리의 세계. 너였기에, 난 사랑을 할 수 있었어... 잃고 싶지 않는 그녀를 다시 되찾기 위해 시간을 넘어 여기, 다시 시작되는 우리의 평행세계 로맨스",
     },
   },
 ];
@@ -121,6 +130,15 @@ export default function Home() {
   const displayImage = films[displayIndex].image;
   const selectedFilm = films[selectedIndex];
 
+  const metaItems = [
+    selectedFilm.section2.credit,
+    selectedFilm.section2.releaseYear,
+    selectedFilm.section2.genre,
+    selectedFilm.section2.runtime,
+    selectedFilm.section2.director ? `감독 ${selectedFilm.section2.director}` : undefined,
+    selectedFilm.section2.cast ? `주연 ${selectedFilm.section2.cast}` : undefined,
+  ].filter((v): v is string => Boolean(v));
+
   const goToFilm = (index: number) => {
     setSelectedIndex(index);
     setActiveIndex(index);
@@ -150,9 +168,6 @@ export default function Home() {
           }}
         />
 
-        {/* ===================== 데스크탑 / 태블릿 (md 이상) =====================
-            기존 방식 그대로: 사진이 화면을 꽉 채우고(object-cover),
-            제목 리스트는 화면 하단에 고정되어 사진 위에 얹힘. */}
         <div className="pointer-events-none absolute inset-0 hidden transition-opacity duration-500 ease-out md:block">
           <img
             key={displayImage}
@@ -180,14 +195,14 @@ export default function Home() {
                     onMouseEnter={() => setHoverIndex(index)}
                     onMouseLeave={() => setHoverIndex(null)}
                     onClick={(e) => goToFilmAndScroll(e, index)}
-                    className="font-semibold text-5xl tracking-tight hover:opacity-70 md:text-6xl"
-                    style={{ fontFamily: "'AritaDotum', sans-serif" }}
+                    className="text-5xl tracking-tight hover:opacity-70 md:text-6xl"
+                    style={{ fontFamily: "'AritaDotumKR', sans-serif", fontWeight: 400 }}
                   >
                     {film.title}
                   </a>
                   <span
-                    className="translate-y-[-0.6em] text-xs font-medium tracking-widest text-white/70 md:text-sm"
-                    style={{ fontFamily: "'AritaDotum', sans-serif" }}
+                    className="translate-y-[-0.6em] text-xs tracking-widest text-white/70 md:text-sm"
+                    style={{ fontFamily: "'AritaDotumKR', sans-serif", fontWeight: 400 }}
                   >
                     {film.year}
                   </span>
@@ -196,7 +211,6 @@ export default function Home() {
             })}
           </ul>
 
-          {/* 진행 인디케이터 */}
           <div className="mt-6 flex w-full max-w-[280px] items-center gap-2 md:mt-8">
             {films.map((film, index) => {
               const isActive = displayIndex === index;
@@ -222,11 +236,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ===================== 모바일 (md 미만) =====================
-            사진마다 원본 비율이 달라서 h-auto로 두면 슬라이드가 바뀔 때마다
-            섹션 높이가 흔들리고, 사진이 짧을 땐 텍스트가 헤더 쪽까지
-            침범하는 문제가 생김. 그래서 고정 비율(aspect-ratio) + object-cover로
-            바꿔 어떤 사진이 와도 항상 같은 높이 = 항상 텍스트 공간 확보되게 함. */}
         <div className="relative w-full pt-16 md:hidden">
           <div className="relative aspect-[4/5] w-full overflow-hidden">
             <img
@@ -236,7 +245,6 @@ export default function Home() {
               className="absolute inset-0 h-full w-full object-cover"
             />
 
-            {/* 사진 하단부에만 걸리는 그라데이션 (텍스트 가독성용) */}
             <div className="pointer-events-none absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
 
             <div className="absolute inset-x-0 bottom-0 px-4 pb-5">
@@ -253,14 +261,14 @@ export default function Home() {
                       <a
                         href="#"
                         onClick={(e) => goToFilmAndScroll(e, index)}
-                        className="text-2xl font-semibold tracking-tight active:opacity-70"
-                        style={{ fontFamily: "'AritaDotum', sans-serif" }}
+                        className="text-2xl tracking-tight active:opacity-70"
+                        style={{ fontFamily: "'AritaDotumKR', sans-serif", fontWeight: 500 }}
                       >
                         {film.title}
                       </a>
                       <span
-                        className="translate-y-[-0.4em] text-[10px] font-medium tracking-widest text-white/70"
-                        style={{ fontFamily: "'AritaDotum', sans-serif" }}
+                        className="translate-y-[-0.4em] text-[10px] tracking-widest text-white/70"
+                        style={{ fontFamily: "'AritaDotumKR', sans-serif", fontWeight: 500 }}
                       >
                         {film.year}
                       </span>
@@ -269,7 +277,6 @@ export default function Home() {
                 })}
               </ul>
 
-              {/* 진행 인디케이터 (모바일용, 작은 사이즈) */}
               <div className="mt-3 flex w-full max-w-[220px] items-center gap-1.5">
                 {films.map((film, index) => {
                   const isActive = displayIndex === index;
@@ -336,8 +343,8 @@ export default function Home() {
             )}
 
             <h2
-              className="text-2xl font-extrabold leading-[1.15] tracking-tight sm:text-3xl md:text-4xl lg:text-5xl"
-              style={{ fontFamily: "'AritaDotum', sans-serif" }}
+              className="text-2xl leading-[1.15] tracking-tight sm:text-3xl md:text-4xl lg:text-5xl"
+              style={{ fontFamily: "'AritaDotumKR', sans-serif", fontWeight: 300 }}
             >
               {selectedFilm.section2.heading.map((line, i) => (
                 <span key={i}>
@@ -347,33 +354,25 @@ export default function Home() {
               ))}
             </h2>
 
-            {(selectedFilm.section2.credit ||
-              selectedFilm.section2.releaseYear ||
-              selectedFilm.section2.genre ||
-              selectedFilm.section2.runtime) && (
-              <p className="mt-4 flex flex-wrap items-center gap-x-2 text-sm font-medium tracking-wide text-black/60 md:text-base">
-                {[
-                  selectedFilm.section2.credit,
-                  selectedFilm.section2.releaseYear,
-                  selectedFilm.section2.genre,
-                  selectedFilm.section2.runtime,
-                ]
-                  .filter(Boolean)
-                  .map((value, i, arr) => (
-                    <span key={value} className="flex items-center gap-x-2">
-                      <span style={{ fontFamily: "'AritaDotum', sans-serif" }}>
-                        {value}
-                      </span>
-                      {i < arr.length - 1 && <span>·</span>}
+            {metaItems.length > 0 && (
+              <p className="mt-4 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs leading-relaxed tracking-wide text-black/60 sm:text-sm md:text-base">
+                {metaItems.map((value, i, arr) => (
+                  <span key={value} className="flex items-center gap-x-2">
+                    <span
+                      style={{ fontFamily: "'AritaDotumKR', sans-serif", fontWeight: 400 }}
+                    >
+                      {value}
                     </span>
-                  ))}
+                    {i < arr.length - 1 && <span className="text-black/30">·</span>}
+                  </span>
+                ))}
               </p>
             )}
 
             {selectedFilm.section2.synopsis && (
               <p
                 className="mt-5 max-w-prose text-sm leading-relaxed text-black/80 md:mt-6 md:text-[15px]"
-                style={{ fontFamily: "'AritaDotum', sans-serif" }}
+                style={{ fontFamily: "'AritaBuriKR', sans-serif", fontWeight: 400 }}
               >
                 {selectedFilm.section2.synopsis}
               </p>
@@ -383,7 +382,7 @@ export default function Home() {
           <a
             href={selectedFilm.section2.href}
             className="group mt-8 flex items-center gap-4 text-sm font-bold tracking-widest"
-            style={{ fontFamily: "'HelveticaCustom', sans-serif" }}
+            style={{ fontFamily: "'AritaBuriKR', sans-serif", fontWeight: 400 }}
           >
             <span className="transition-transform duration-300 group-hover:translate-x-2">
               <svg

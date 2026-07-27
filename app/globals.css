@@ -1,5 +1,127 @@
 @import "tailwindcss";
 
+/* ===== AritaDotumKR (돋음, 제목용) ===== */
+@font-face {
+  font-family: "AritaDotumKR";
+  src: url("/fonts/AritaDotumKR-Thin.ttf") format("truetype");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "AritaDotumKR";
+  src: url("/fonts/AritaDotumKR-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "AritaDotumKR";
+  src: url("/fonts/AritaDotumKR-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "AritaDotumKR";
+  src: url("/fonts/AritaDotumKR-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "AritaDotumKR";
+  src: url("/fonts/AritaDotumKR-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ===== AritaBuriKR (국문) ===== */
+@font-face {
+  font-family: "AritaBuriKR";
+  src: url("/fonts/AritaBuriKR-HairLine.ttf") format("truetype");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "AritaBuriKR";
+  src: url("/fonts/AritaBuriKR-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "AritaBuriKR";
+  src: url("/fonts/AritaBuriKR-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "AritaBuriKR";
+  src: url("/fonts/AritaBuriKR-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "AritaBuriKR";
+  src: url("/fonts/AritaBuriKR-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ===== AritaSansLTN (영문/숫자) ===== */
+@font-face {
+  font-family: "AritaSansLTN";
+  src: url("/fonts/AritaSansLTN-Thin.ttf") format("truetype");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "AritaSansLTN";
+  src: url("/fonts/AritaSansLTN-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "AritaSansLTN";
+  src: url("/fonts/AritaSansLTN-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "AritaSansLTN";
+  src: url("/fonts/AritaSansLTN-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "AritaSansLTN";
+  src: url("/fonts/AritaSansLTN-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
 
 @font-face {
   font-family: 'AritaDotum';
@@ -12,6 +134,23 @@
   font-family: "HelveticaCustom";
   src: url("/fonts/Helvetica.ttf") format("truetype");
   font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ===== Jones ===== */
+@font-face {
+  font-family: "Jones";
+  src: url("/fonts/Jones-Light.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Jones";
+  src: url("/fonts/Jones-Medium.otf") format("opentype");
+  font-weight: 500;
   font-style: normal;
   font-display: swap;
 }

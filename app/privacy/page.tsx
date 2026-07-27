@@ -68,43 +68,6 @@ export default function PrivacyPage() {
             분쇄하거나 소각하는 방법으로 파기합니다.
           </p>
         </section>
-
-        <section>
-          <h2 className="mb-2 text-base font-bold">6. 이용자 및 법정대리인의 권리와 행사 방법</h2>
-          <p>
-            이용자는 언제든지 자신의 개인정보에 대해 열람, 정정, 삭제, 처리
-            정지를 요청할 수 있으며, 회사는 이에 대해 지체 없이 필요한 조치를
-            취합니다.
-          </p>
-        </section>
-
-        <section>
-          <h2 className="mb-2 text-base font-bold">7. 개인정보 보호책임자</h2>
-          <p>
-            회사는 개인정보 처리에 관한 업무를 총괄해서 책임지고, 개인정보
-            처리와 관련한 이용자의 불만처리 및 피해구제 등을 위하여 아래와
-            같이 개인정보 보호책임자를 지정하고 있습니다.
-          </p>
-          <ul className="mt-2 list-disc pl-5">
-            <li>개인정보 보호책임자: (강병화)</li>
-            <li>연락처: (0262639171)</li>
-          </ul>
-        </section>
-
-        <section>
-          <h2 className="mb-2 text-base font-bold">8. 개인정보처리방침의 변경</h2>
-          <p>
-            이 개인정보처리방침은 시행일로부터 적용되며, 법령 및 방침에 따른
-            변경내용의 추가, 삭제 및 정정이 있는 경우에는 개정 최소 7일 전부터
-            공지사항을 통하여 고지할 것입니다.
-          </p>
-        </section>
-
-        <section>
-          <p className="text-black/50">
-            공고일자: 2026년 1월 1일 / 시행일자: 2026년 1월 1일
-          </p>
-        </section>
       </div>
     </main>
   );

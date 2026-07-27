@@ -2,6 +2,8 @@
 
 export default function Contact() {
   const email = "dohoenter@naver.com";
+  const phone = "0262639171";
+  const phoneDisplay = "02-6263-9171";
   const address = "서울특별시 종로구 인사동 194-4 하나로빌딩 507호";
   const mapSrc =
     "https://www.google.com/maps?q=" +
@@ -13,17 +15,18 @@ export default function Contact() {
       <section className="flex flex-1 flex-col items-start justify-center gap-10 py-16">
         <div className="flex -translate-y-4 flex-col items-start gap-4 md:translate-y-0">
           <h1
-            className="text-[5vw] font-extrabold uppercase leading-[1.1] tracking-tight sm:text-3xl md:text-4xl lg:text-5xl"
-            style={{ fontFamily: "'AritaDotum', sans-serif" }}
+            className="text-[5vw] uppercase leading-[1.1] tracking-tight sm:text-3xl md:text-4xl lg:text-5xl"
+            style={{ fontFamily: "'AritaDotumKR', sans-serif", fontWeight: 500 }}
           >
-            문의하기
+            문의
           </h1>
 
           <a
             href={`mailto:${email}`}
             className="group flex items-center gap-3 text-base tracking-tight text-white/90 transition-colors hover:text-white sm:text-lg md:text-xl"
             style={{
-              fontFamily: "'HelveticaCustom', sans-serif",
+              fontFamily: "'AritaBuriKR', sans-serif",
+              fontWeight: 300,
             }}
           >
             {email}
@@ -42,9 +45,33 @@ export default function Contact() {
             </span>
           </a>
 
+          <a
+            href={`tel:${phone}`}
+            className="group flex items-center gap-3 text-base tracking-tight text-white/90 transition-colors hover:text-white sm:text-lg md:text-xl"
+            style={{
+              fontFamily: "'AritaBuriKR', sans-serif",
+              fontWeight: 300,
+            }}
+          >
+            {phoneDisplay}
+            <span className="transition-transform duration-300 group-hover:translate-x-2">
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+              >
+                <line x1="4" y1="12" x2="20" y2="12" />
+                <polyline points="14 6 20 12 14 18" />
+              </svg>
+            </span>
+          </a>
+
           <p
             className="mt-2 max-w-xs text-sm leading-relaxed text-white/60"
-            style={{ fontFamily: "'AritaDotum', sans-serif" }}
+            style={{ fontFamily: "'AritaBuriKR', sans-serif", fontWeight: 300 }}
           >
             {address}
           </p>

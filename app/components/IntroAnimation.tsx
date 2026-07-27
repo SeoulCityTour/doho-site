@@ -105,7 +105,7 @@ export default function IntroAnimation({ onComplete }: IntroAnimationProps) {
 
       {/* center focus marker + logo */}
       <div className="relative flex flex-1 items-center justify-center">
-        <div className="relative flex h-64 w-64 items-center justify-center sm:h-80 sm:w-80">
+        <div className="relative flex h-48 w-72 items-center justify-center sm:h-56 sm:w-96">
           <div
             className="absolute left-0 top-0 h-7 w-7 border-l-2 border-t-2 border-white/70 sm:h-9 sm:w-9"
             style={{
@@ -146,7 +146,7 @@ export default function IntroAnimation({ onComplete }: IntroAnimationProps) {
             +
           </span>
 
-          <div
+<div
             className="relative flex flex-col items-center justify-center gap-2 px-4 text-center"
             style={{
               opacity: 0,
@@ -156,9 +156,9 @@ export default function IntroAnimation({ onComplete }: IntroAnimationProps) {
             }}
           >
             <div
-              className="text-3xl font-extrabold tracking-[0.05em] text-white sm:text-4xl"
+              className="text-3xl font-semibold tracking-[0.05em] text-white sm:text-4xl"
               style={{
-                fontFamily: "'HelveticaCustom', sans-serif",
+                fontFamily: "'Jones', sans-serif",
                 display: "inline-block",
                 animation: introPlay
                   ? `doho-emphasis 550ms 540ms ease-out both`
@@ -168,12 +168,20 @@ export default function IntroAnimation({ onComplete }: IntroAnimationProps) {
               DOHO
             </div>
             <div
-              className="text-[11px] font-semibold uppercase tracking-[0.15em] text-white/90 sm:text-sm"
-              style={{ fontFamily: "'HelveticaCustom', sans-serif" }}
+              className="whitespace-nowrap text-[10px] font-semibold uppercase tracking-[0.15em] text-white/90 sm:text-sm"
+              style={{ fontFamily: "'Jones', sans-serif" }}
+            >
+              Entertainment
+            </div>
+            <div
+              className="whitespace-nowrap text-[10px] uppercase tracking-[0.15em] text-white/90 sm:text-sm"
+              style={{ fontFamily: "'Jones', sans-serif", fontWeight: 300 }}
             >
               Path to a Wider, Immersive World.
             </div>
           </div>
+
+
         </div>
       </div>
 
