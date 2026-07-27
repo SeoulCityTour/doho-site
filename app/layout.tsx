@@ -41,7 +41,7 @@ export const metadata: Metadata = {
   verification: {
     google: "여기에_구글_인증코드_붙여넣기",
     other: {
-      "naver-site-verification": ["여기에_네이버_인증코드_붙여넣기"],
+      "naver-site-verification": ["50bb6c72b4fe16a39e882a776454c7a9495fbefb"],
     },
   },
 };
