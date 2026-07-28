@@ -21,10 +21,12 @@ export const metadata: Metadata = {
     default: "도호엔터테인먼트",
     template: "%s | 도호엔터테인먼트",
   },
-  description: "영화 제공/제작/수입사 도호엔터테인먼트입니다.",
+  description:
+    "도호엔터테인먼트는 영화 제작·투자·수입을 전문으로 하는 콘텐츠 기업입니다. 치악산(2022), 돌핀보이(2022), 나를 모르는 그녀의 세계에서(2025) 등을 제공/제작했습니다.",
   openGraph: {
     title: "도호엔터테인먼트",
-    description: "영화 제공/제작/수입사 도호엔터테인먼트입니다.",
+    description:
+      "도호엔터테인먼트는 영화 제작·투자·수입을 전문으로 하는 콘텐츠 기업입니다. 치악산(2022), 돌핀보이(2022), 나를 모르는 그녀의 세계에서(2025) 등을 제공/제작했습니다.",
     url: baseUrl,
     siteName: "도호엔터테인먼트",
     images: [`${baseUrl}/logo_m.png`],
@@ -35,15 +37,17 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     images: [`${baseUrl}/logo_m.png`],
   },
-  icons: {
-    icon: "/favicon.ico",
-  },
+  // icons 필드는 삭제했습니다.
+  // app/favicon.ico 파일이 있으면 Next.js가 자동으로 <link rel="icon"> 태그를 생성해줍니다.
+  // 여기서 다시 선언하면 중복 태그가 생겨 구글봇이 대표 파비콘을 혼동할 수 있어요.
+  // 더 큰 사이즈(192x192, 512x512)를 추가하고 싶으면 app/icon.png 파일을 추가하세요.
+  // 그러면 Next.js가 그것도 자동으로 인식해서 처리해줍니다.
   verification: {
     google: "slVdoUcubm5rSjqGiff9XOo03hHR3pYUMC1kxBoCrhI",
     other: {
       "naver-site-verification": ["50bb6c72b4fe16a39e882a776454c7a9495fbefb"],
     },
-  }, 
+  },
 };
 
 const organizationJsonLd = {
@@ -79,7 +83,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return (  
+  return (
     <html
       lang="ko"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
@@ -95,4 +99,4 @@ export default function RootLayout({
       </body>
     </html>
   );
-}  
+}
