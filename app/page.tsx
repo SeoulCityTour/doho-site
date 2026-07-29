@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import IntroAnimation from "./components/IntroAnimation";
+import PhotoModal from "./components/PhotoModal";
 
 type FilmSection2 = {
   image: string;
@@ -16,6 +17,7 @@ type FilmSection2 = {
   director?: string;
   cast?: string;
   synopsis?: string;
+  photos?: string[];
 };
 
 type Film = {
@@ -44,6 +46,12 @@ const films: Film[] = [
       cast: "윤균상, 김예원",
       synopsis:
         "산악바이크 동아리 '산가자'의 리더 '민준'(윤균상)과 팀원들은 라이딩 영상을 촬영하기 위해 치악산으로 향한다. '민준'의 사촌 동생, '현지'(김예원) 아버지의 산장에 머물게 된 이들은 40년 전 '현지' 아버지가 치악산에서 실종되었다는 사실을 알게 되고 그날 밤부터 팀원 '양배'(연제욱), '수아'(배그린), '이삭'(이태환)을 비롯한 모두에게 정체를 알 수 없는 기이한 일들이 벌어지는데 ……",
+      photos: [
+        "/photos/CHIAK1.png",
+        "/photos/CHIAK2.png",
+        "/photos/CHIAK3.png",
+        "/photos/CHIAK4.png",
+      ],
     },
   },
   {
@@ -63,6 +71,11 @@ const films: Film[] = [
       director: "모하마드 케이란디시",
       synopsis:
         "\"우린 함께일 때 가장 강해!\" 돌고래 가족의 보살핌 속에 바다의 히어로로 성장한 '돌핀보이'. 어느 날, 극적으로 만난 아빠가 바다를 차지하려는 악당에게 납치당하는 사건이 발생한다. 돌핀보이는 단짝 친구인 돌고래 '스노우볼', 반전 매력 상어 '샤키' 등 바닷속 친구들과 함께 아빠를 구하고 바다를 지키기 위해 커다란 게 몬스터가 사는 괴물섬으로 환상적인 모험을 떠난다. 바다와 인간 세계를 넘나드는 가슴 벅찬 어드벤처가 펼쳐진다!",
+      photos: [
+        "/photos/DOLPHIN%20202203.jpg",
+        "/photos/DOLPHIN%20202204.jpg",
+        "/photos/DOLPHIN005.jpg",
+      ],
     },
   },
   {
@@ -83,6 +96,14 @@ const films: Film[] = [
       cast: "나카지마 켄토, 미레이",
       synopsis:
         "어느 날, 눈을 뜨자 우리가 사랑한 모든 시간이 사라졌다. 베스트셀러 작가 '리쿠'는 8년을 함께한 첫사랑 '미나미'와 모르는 사이가 되어버린 낯선 세계에서 깨어난다. 너였기에, 빛나던 우리의 세계. 너였기에, 난 사랑을 할 수 있었어... 잃고 싶지 않는 그녀를 다시 되찾기 위해 시간을 넘어 여기, 다시 시작되는 우리의 평행세계 로맨스",
+      photos: [
+        "/photos/she1.webp",
+        "/photos/she2.webp",
+        "/photos/she3.webp",
+        "/photos/she4.webp",
+        "/photos/she5.webp",
+        "/photos/she6.png",
+      ],
     },
   },
 ];
@@ -103,6 +124,8 @@ export default function Home() {
 
   const [showIntro, setShowIntro] = useState(false);
   const [introChecked, setIntroChecked] = useState(false);
+
+  const [isPhotoModalOpen, setIsPhotoModalOpen] = useState(false);
 
   useEffect(() => {
     if (!introShownThisLoad) {
@@ -153,10 +176,25 @@ export default function Home() {
     document.getElementById("shop-section")?.scrollIntoView({ behavior: "smooth" });
   };
 
+  const handleCtaClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    if (selectedFilm.section2.photos && selectedFilm.section2.photos.length > 0) {
+      setIsPhotoModalOpen(true);
+    }
+  };
+
   return (
     <main className="w-full">
       {introChecked && showIntro && (
         <IntroAnimation onComplete={handleIntroComplete} />
+      )}
+
+      {isPhotoModalOpen && selectedFilm.section2.photos && (
+        <PhotoModal
+          photos={selectedFilm.section2.photos}
+          title={selectedFilm.title}
+          onClose={() => setIsPhotoModalOpen(false)}
+        />
       )}
 
       <section className="relative flex w-full flex-col justify-between overflow-hidden bg-[#141210] text-white md:h-screen">
@@ -381,6 +419,7 @@ export default function Home() {
 
           <a
             href={selectedFilm.section2.href}
+            onClick={handleCtaClick}
             className="group mt-8 flex items-center gap-4 text-sm font-bold tracking-widest"
             style={{ fontFamily: "'AritaBuriKR', sans-serif", fontWeight: 400 }}
           >
