@@ -13,7 +13,7 @@ export default function About() {
   ];
 
   return (
-    <main className="flex min-h-screen w-full flex-col justify-center bg-[#141210] px-6 py-10 text-white md:px-10 md:py-16">
+    <main className="flex min-h-screen w-full flex-col justify-center bg-[#111111] px-6 py-10 text-white md:px-10 md:py-16">
       <section className="flex max-w-2xl flex-col items-start gap-6">
 
         <h1

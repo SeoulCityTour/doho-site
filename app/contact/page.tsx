@@ -11,7 +11,7 @@ export default function Contact() {
     "&output=embed";
 
   return (
-    <main className="flex min-h-screen w-full flex-col bg-[#141210] px-6 py-10 text-white md:px-10 md:py-16">
+    <main className="flex min-h-screen w-full flex-col bg-[#111111] px-6 py-10 text-white md:px-10 md:py-16">
       <section className="flex flex-1 flex-col items-start justify-center gap-10 py-16">
         <div className="flex -translate-y-4 flex-col items-start gap-4 md:translate-y-0">
           <h1

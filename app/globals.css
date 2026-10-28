@@ -183,3 +183,22 @@ body {
   color: var(--foreground);
   font-family: var(--font-body);
 }
+/* 햄버거 메뉴 슬로건 뒤 배경 문구 무한 흐름 (같은 문구 8개 중 앞 4개 길이만큼 이동 후 반복) */
+.pathos-ticker {
+  animation: pathos-flow 120s linear infinite;
+}
+
+@keyframes pathos-flow {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pathos-ticker {
+    animation: none;
+  }
+}

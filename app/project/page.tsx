@@ -32,15 +32,7 @@ export default function ProjectPage() {
   return (
     <main className="w-full">
       {/* 상단 배너 */}
-      <section className="relative flex h-[220px] w-full flex-col justify-end overflow-hidden bg-[#141210] px-6 pb-8 text-white md:h-[280px] md:px-10 md:pb-10">
-        <div
-          className="pointer-events-none absolute inset-0"
-          style={{
-            background:
-              "radial-gradient(120% 90% at 30% 20%, #3a332c 0%, #201c18 45%, #0f0d0b 100%)",
-          }}
-        />
-
+      <section className="relative flex h-[220px] w-full flex-col justify-end overflow-hidden bg-[#111111] px-6 pb-8 text-white md:h-[280px] md:px-10 md:pb-10">
         <div className="relative z-10">
           <p className="flex flex-wrap items-baseline gap-2 text-xl tracking-tight sm:text-2xl md:text-3xl">
             <span style={{ fontFamily: "var(--font-display)", letterSpacing: "-0.02em", fontWeight: 500 }}>

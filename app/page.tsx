@@ -1,7 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import IntroAnimation from "./components/IntroAnimation";
+// 기존 REC 인트로: import IntroAnimation from "./components/IntroAnimation";
+import CinemaFrameIntro from "./components/CinemaFrameIntro";
 import PhotoModal from "./components/PhotoModal";
 
 type FilmSection2 = {
@@ -122,17 +123,11 @@ export default function Home() {
   const [hoverIndex, setHoverIndex] = useState<number | null>(null);
   const [selectedIndex, setSelectedIndex] = useState(0);
 
-  const [showIntro, setShowIntro] = useState(false);
-  const [introChecked, setIntroChecked] = useState(false);
+  // 서버 렌더 단계부터 인트로를 덮어둬야 새로고침 시 메인 화면이 먼저 비치지 않음
+  // (같은 탭에서 다른 페이지 갔다가 돌아오면 introShownThisLoad가 true라 다시 안 뜸)
+  const [showIntro, setShowIntro] = useState(() => !introShownThisLoad);
 
   const [isPhotoModalOpen, setIsPhotoModalOpen] = useState(false);
-
-  useEffect(() => {
-    if (!introShownThisLoad) {
-      setShowIntro(true);
-    }
-    setIntroChecked(true);
-  }, []);
 
   const handleIntroComplete = () => {
     introShownThisLoad = true;
@@ -185,8 +180,8 @@ export default function Home() {
 
   return (
     <main className="w-full">
-      {introChecked && showIntro && (
-        <IntroAnimation onComplete={handleIntroComplete} />
+      {showIntro && (
+        <CinemaFrameIntro onComplete={handleIntroComplete} />
       )}
 
       {isPhotoModalOpen && selectedFilm.section2.photos && (
@@ -197,15 +192,7 @@ export default function Home() {
         />
       )}
 
-      <section className="relative flex w-full flex-col justify-between overflow-hidden bg-[#141210] text-white md:h-screen">
-        <div
-          className="pointer-events-none absolute inset-0 hidden md:block"
-          style={{
-            background:
-              "radial-gradient(120% 90% at 30% 20%, #3a332c 0%, #201c18 45%, #0f0d0b 100%)",
-          }}
-        />
-
+      <section className="relative flex w-full flex-col justify-between overflow-hidden bg-[#111111] text-white md:h-screen">
         <div className="pointer-events-none absolute inset-0 hidden transition-opacity duration-500 ease-out md:block">
           <img
             key={displayImage}
@@ -355,7 +342,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="shop-section" className="flex h-screen w-full flex-col bg-white text-black md:flex-row">
+      <section id="shop-section" className="flex h-screen w-full flex-col bg-white text-[#111111] md:flex-row">
         <div className="relative h-1/2 w-full bg-[#eeeeee] md:h-full md:w-1/2">
           <div className="absolute inset-0 p-6 md:p-10">
             <img
@@ -393,7 +380,7 @@ export default function Home() {
             </h2>
 
             {metaItems.length > 0 && (
-              <p className="mt-4 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs leading-relaxed tracking-wide text-black/60 sm:text-sm md:text-base">
+              <p className="mt-4 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs leading-relaxed tracking-wide text-[#60605e] sm:text-sm md:text-base">
                 {metaItems.map((value, i, arr) => (
                   <span key={value} className="flex items-center gap-x-2">
                     <span
@@ -401,7 +388,7 @@ export default function Home() {
                     >
                       {value}
                     </span>
-                    {i < arr.length - 1 && <span className="text-black/30">·</span>}
+                    {i < arr.length - 1 && <span className="text-[#60605e]">·</span>}
                   </span>
                 ))}
               </p>

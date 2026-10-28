@@ -59,7 +59,7 @@ export default function Header() {
       {/* 전체화면 메뉴 오버레이 - 패널 자체는 슬라이드, 안의 텍스트는 따로 페이드인/아웃 시켜서
           슬라이드 경계에서 텍스트가 콘텐츠와 겹쳐 보이는 현상을 방지함 */}
       <div
-        className={`fixed inset-0 z-50 flex flex-col bg-white text-black transition-transform duration-500 ease-in-out ${
+        className={`fixed inset-0 z-50 flex flex-col bg-white text-[#111111] transition-transform duration-500 ease-in-out ${
           menuOpen ? "translate-y-0" : "-translate-y-full"
         }`}
       >
@@ -106,12 +106,38 @@ export default function Header() {
               ))}
             </nav>
 
-            <p
-              className="max-w-[16rem] text-xs leading-relaxed text-black/50 sm:max-w-xs sm:text-sm md:max-w-sm md:mb-[86px] md:mr-12 xl:mr-[4vw] md:text-right md:text-lg md:text-black/70 xl:max-w-none xl:whitespace-nowrap xl:text-[1.75vw] xl:leading-none"
-              style={{ fontFamily: "var(--font-display)", letterSpacing: "-0.02em", fontWeight: 300 }}
-            >
-              A path to wide and immersive cinema, continuously linking the states of pathos.
-            </p>
+            <div className="relative max-w-[16rem] text-xs sm:max-w-xs sm:text-sm md:mb-[86px] md:mr-12 md:max-w-sm md:text-lg xl:mr-[4vw] xl:max-w-none xl:text-[1.75vw]">
+              {/* 슬로건 뒤로 흐르는 배경 문구 - 모바일은 화면 전체 폭, 데스크톱은 슬로건 폭. 양 끝은 페이드 처리 */}
+              <div
+                aria-hidden
+                className="pointer-events-none absolute left-[-1.5rem] top-1/2 w-screen -translate-y-1/2 overflow-hidden md:left-[-3em] md:right-[-3em] md:w-auto"
+                style={{
+                  maskImage:
+                    "linear-gradient(to right, transparent, black 15%, black 85%, transparent)",
+                  WebkitMaskImage:
+                    "linear-gradient(to right, transparent, black 15%, black 85%, transparent)",
+                }}
+              >
+                <div className="pathos-ticker flex w-max">
+                  {Array.from({ length: 8 }).map((_, i) => (
+                    <span
+                      key={i}
+                      className="whitespace-nowrap pr-[0.6em] text-[1.8em] leading-none text-black/[0.025]"
+                      style={{ fontFamily: "var(--font-display)", fontWeight: 700, letterSpacing: "-0.02em" }}
+                    >
+                      감정의 다양한 상태를 끊임없이 연결하며 폭넓고 몰입감 넘치는 영화 세계로 향합니다 &mdash;
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <p
+                className="relative leading-relaxed text-black/50 md:text-right md:text-black/70 xl:whitespace-nowrap xl:leading-none"
+                style={{ fontFamily: "var(--font-display)", letterSpacing: "-0.02em", fontWeight: 300 }}
+              >
+                A path to wide and immersive cinema, continuously linking the states of pathos.
+              </p>
+            </div>
           </div>
 
           <div className="h-16 md:h-20" />
@@ -129,7 +155,7 @@ export default function Header() {
             : "pointer-events-auto opacity-100 delay-200"
         } ${
           showColored
-            ? "bg-white/90 text-black shadow-sm backdrop-blur-md"
+            ? "bg-white/90 text-[#111111] shadow-sm backdrop-blur-md"
             : "bg-transparent text-white"
         }`}
         // 노치/다이나믹 아일랜드가 있는 기기에서 헤더가 안전영역을 침범하지 않도록
@@ -152,17 +178,17 @@ export default function Header() {
             <span className="flex flex-col gap-[5px]">
               <span
                 className={`block h-[3px] w-8 transition-colors duration-300 md:w-9 ${
-                  showColored ? "bg-black" : "bg-white"
+                  showColored ? "bg-[#111111]" : "bg-white"
                 }`}
               />
               <span
                 className={`block h-[3px] w-8 transition-colors duration-300 md:w-9 ${
-                  showColored ? "bg-black" : "bg-white"
+                  showColored ? "bg-[#111111]" : "bg-white"
                 }`}
               />
               <span
                 className={`block h-[3px] w-8 transition-colors duration-300 md:w-9 ${
-                  showColored ? "bg-black" : "bg-white"
+                  showColored ? "bg-[#111111]" : "bg-white"
                 }`}
               />
             </span>
