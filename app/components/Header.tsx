@@ -73,7 +73,7 @@ export default function Header() {
               type="button"
               onClick={() => setMenuOpen(false)}
               className="flex items-center gap-3 text-xs tracking-[0.25em]"
-              style={{ fontFamily: "'AritaSansLTN', sans-serif", fontWeight: 500 }}
+              style={{ fontFamily: "var(--font-display)", letterSpacing: "-0.02em", fontWeight: 500 }}
             >
               <svg
                 width="18"
@@ -90,19 +90,29 @@ export default function Header() {
             </button>
           </header>
 
-          <nav className="flex flex-1 flex-col items-start justify-center gap-2 px-6 md:gap-4 md:px-10">
-            {menuItems.map((item) => (
-              <Link
-                key={item.label}
-                href={item.href}
-                onClick={() => setMenuOpen(false)}
-                className="text-[7vw] uppercase leading-[1.1] tracking-tight transition-opacity hover:opacity-60 sm:text-4xl md:text-6xl"
-                style={{ fontFamily: "'AritaSansLTN', sans-serif", fontWeight: 600 }}
-              >
-                {item.label}
-              </Link>
-            ))}
-          </nav>
+          {/* 모바일: 메뉴 아래에 슬로건 / 데스크톱: 메뉴 왼쪽, 슬로건 오른쪽 하단 정렬 */}
+          <div className="flex flex-1 flex-col justify-center gap-10 px-6 md:flex-row md:items-end md:justify-between md:gap-16 md:px-10 md:pb-[20vh] md:pt-[20vh]">
+            <nav className="flex flex-col items-start gap-2 md:gap-4">
+              {menuItems.map((item) => (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  onClick={() => setMenuOpen(false)}
+                  className="text-[7vw] uppercase leading-[1.1] tracking-tight transition-opacity hover:opacity-60 sm:text-4xl md:text-6xl"
+                  style={{ fontFamily: "var(--font-display)", letterSpacing: "-0.02em", fontWeight: 500 }}
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
+
+            <p
+              className="max-w-[16rem] text-xs leading-relaxed text-black/50 sm:max-w-xs sm:text-sm md:max-w-sm md:mb-[86px] md:mr-12 xl:mr-[4vw] md:text-right md:text-lg md:text-black/70 xl:max-w-none xl:whitespace-nowrap xl:text-[1.75vw] xl:leading-none"
+              style={{ fontFamily: "var(--font-display)", letterSpacing: "-0.02em", fontWeight: 300 }}
+            >
+              A path to wide and immersive cinema, continuously linking the states of pathos.
+            </p>
+          </div>
 
           <div className="h-16 md:h-20" />
         </div>

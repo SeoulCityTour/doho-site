@@ -158,6 +158,10 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  /* 큰글씨: 영문 Space Grotesk → 국문 Pretendard */
+  --font-display: var(--font-space-grotesk), "Pretendard Variable", Pretendard, sans-serif;
+  /* 본문: 영문 Plus Jakarta Sans → 국문 Noto Sans KR */
+  --font-body: var(--font-plus-jakarta), var(--font-noto-sans-kr), "Pretendard Variable", sans-serif;
 }
 
 @theme inline {
@@ -177,5 +181,5 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body);
 }

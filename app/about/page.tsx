@@ -18,14 +18,14 @@ export default function About() {
 
         <h1
           className="text-3xl uppercase leading-[1.1] tracking-tight sm:text-4xl md:text-[2.75rem] lg:text-5xl"
-          style={{ fontFamily: "'AritaDotumKR', sans-serif", fontWeight: 500 }}
+          style={{ fontFamily: "var(--font-display)", letterSpacing: "-0.02em", fontWeight: 500 }}
         >
           회사 소개
         </h1>
 
         <p
           className="max-w-xl text-sm leading-relaxed text-white/80 sm:text-base md:text-lg"
-          style={{ fontFamily: "'AritaBuriKR', sans-serif", fontWeight: 300 }}
+          style={{ fontFamily: "var(--font-body)", fontWeight: 300 }}
         >
           도호 엔터테인먼트는 2021년 설립되어 영화 제작, 투자 및 수입 등의
           <br />
@@ -37,7 +37,7 @@ export default function About() {
             <p
               key={unit.label}
               className="max-w-xl text-sm leading-relaxed text-white/70 sm:text-base"
-              style={{ fontFamily: "'AritaBuriKR', sans-serif", fontWeight: 300 }}
+              style={{ fontFamily: "var(--font-body)", fontWeight: 300 }}
             >
               <span
                 className="text-white"
@@ -58,7 +58,7 @@ export default function About() {
             </p>
             <p
               className="mt-2 text-xl tracking-tight sm:text-2xl"
-              style={{ fontFamily: "'AritaBuriKR', sans-serif", fontWeight: 300 }}
+              style={{ fontFamily: "var(--font-body)", fontWeight: 300 }}
             >
               2021년
             </p>
@@ -70,7 +70,7 @@ export default function About() {
             </p>
             <p
               className="mt-2 text-xl tracking-tight sm:text-2xl"
-              style={{ fontFamily: "'AritaBuriKR', sans-serif", fontWeight: 300 }}
+              style={{ fontFamily: "var(--font-body)", fontWeight: 300 }}
             >
               박도영
             </p>

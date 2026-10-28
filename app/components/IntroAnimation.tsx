@@ -158,7 +158,7 @@ export default function IntroAnimation({ onComplete }: IntroAnimationProps) {
             <div
               className="text-3xl font-semibold tracking-[0.05em] text-white sm:text-4xl"
               style={{
-                fontFamily: "'Jones', sans-serif",
+                fontFamily: "var(--font-plus-jakarta)", letterSpacing: "-0.02em",
                 display: "inline-block",
                 animation: introPlay
                   ? `doho-emphasis 550ms 540ms ease-out both`
@@ -169,15 +169,17 @@ export default function IntroAnimation({ onComplete }: IntroAnimationProps) {
             </div>
             <div
               className="whitespace-nowrap text-[10px] font-semibold uppercase tracking-[0.15em] text-white/90 sm:text-sm"
-              style={{ fontFamily: "'Jones', sans-serif" }}
+              style={{ fontFamily: "var(--font-plus-jakarta)", letterSpacing: "-0.02em" }}
             >
               Entertainment
             </div>
             <div
-              className="whitespace-nowrap text-[10px] uppercase tracking-[0.15em] text-white/90 sm:text-sm"
-              style={{ fontFamily: "'Jones', sans-serif", fontWeight: 300 }}
+              className="max-w-[80vw] text-[10px] uppercase leading-relaxed tracking-[0.15em] text-white/90 sm:max-w-none sm:whitespace-nowrap sm:text-sm"
+              style={{ fontFamily: "var(--font-display)", letterSpacing: "-0.02em", fontWeight: 300 }}
             >
-              Path to a Wider, Immersive World.
+              A path to wide and immersive cinema,
+              <br />
+              continuously linking the states of pathos.
             </div>
           </div>
 

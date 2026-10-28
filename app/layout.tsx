@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Space_Grotesk, Plus_Jakarta_Sans, Noto_Sans_KR } from "next/font/google";
+import "pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css";
 import "./globals.css";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
@@ -11,6 +12,22 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+});
+// 영문 큰글씨
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-space-grotesk",
+  subsets: ["latin"],
+});
+// 영문 본문
+const plusJakarta = Plus_Jakarta_Sans({
+  variable: "--font-plus-jakarta",
+  subsets: ["latin"],
+});
+// 국문 본문
+const notoSansKr = Noto_Sans_KR({
+  variable: "--font-noto-sans-kr",
+  weight: ["300", "400", "500", "700"],
+  preload: false,
 });
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://dohoent.com";
@@ -86,7 +103,7 @@ export default function RootLayout({
   return (
     <html
       lang="ko"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${spaceGrotesk.variable} ${plusJakarta.variable} ${notoSansKr.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         <script

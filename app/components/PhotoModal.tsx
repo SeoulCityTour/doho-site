@@ -43,7 +43,7 @@ export default function PhotoModal({ photos, title, onClose }: PhotoModalProps) 
       >
         <div
           className="flex items-baseline gap-3"
-          style={{ fontFamily: "'AritaDotumKR', sans-serif", fontWeight: 300 }}
+          style={{ fontFamily: "var(--font-display)", letterSpacing: "-0.02em", fontWeight: 300 }}
         >
           <h3 className="text-sm tracking-widest md:text-base">{title}</h3>
           <span className="text-xs tracking-widest text-white/50">

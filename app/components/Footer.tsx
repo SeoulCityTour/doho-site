@@ -28,7 +28,7 @@ export default function Footer() {
                   href={link.href}
                   className="text-sm tracking-wide text-black/60 transition-colors hover:text-black"
                   style={{
-                    fontFamily: "'AritaSansLTN', Helvetica, Arial, sans-serif",
+                    fontFamily: "var(--font-display)", letterSpacing: "-0.02em",
                     fontWeight: 600,
                   }}
                 >
@@ -43,12 +43,6 @@ export default function Footer() {
 
         <div className="flex flex-col gap-2 text-xs tracking-widest text-black/40">
           <span>© 2026 (주)도호엔터테인먼트</span>
-          <span
-            className="text-[10px] tracking-normal text-black/30"
-            style={{ fontFamily: "'AritaDotum', sans-serif" }}
-          >
-            이 제작물은 아모레퍼시픽의 아리따글꼴을 사용하여 디자인 되었습니다.
-          </span>
         </div>
       </div>
     </footer>

@@ -234,13 +234,13 @@ export default function Home() {
                     onMouseLeave={() => setHoverIndex(null)}
                     onClick={(e) => goToFilmAndScroll(e, index)}
                     className="text-5xl tracking-tight hover:opacity-70 md:text-6xl"
-                    style={{ fontFamily: "'AritaDotumKR', sans-serif", fontWeight: 400 }}
+                    style={{ fontFamily: "var(--font-display)", letterSpacing: "-0.02em", fontWeight: 400 }}
                   >
                     {film.title}
                   </a>
                   <span
                     className="translate-y-[-0.6em] text-xs tracking-widest text-white/70 md:text-sm"
-                    style={{ fontFamily: "'AritaDotumKR', sans-serif", fontWeight: 400 }}
+                    style={{ fontFamily: "var(--font-display)", letterSpacing: "-0.02em", fontWeight: 400 }}
                   >
                     {film.year}
                   </span>
@@ -300,13 +300,13 @@ export default function Home() {
                         href="#"
                         onClick={(e) => goToFilmAndScroll(e, index)}
                         className="text-2xl tracking-tight active:opacity-70"
-                        style={{ fontFamily: "'AritaDotumKR', sans-serif", fontWeight: 500 }}
+                        style={{ fontFamily: "var(--font-display)", letterSpacing: "-0.02em", fontWeight: 500 }}
                       >
                         {film.title}
                       </a>
                       <span
                         className="translate-y-[-0.4em] text-[10px] tracking-widest text-white/70"
-                        style={{ fontFamily: "'AritaDotumKR', sans-serif", fontWeight: 500 }}
+                        style={{ fontFamily: "var(--font-display)", letterSpacing: "-0.02em", fontWeight: 500 }}
                       >
                         {film.year}
                       </span>
@@ -370,7 +370,7 @@ export default function Home() {
         <div
           className="flex h-1/2 w-full flex-col justify-between overflow-y-auto px-6 py-10 md:h-full md:w-1/2 md:px-16 md:py-16"
           style={{
-            fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif",
+            fontFamily: "var(--font-body)",
           }}
         >
           <div>
@@ -382,7 +382,7 @@ export default function Home() {
 
             <h2
               className="text-2xl leading-[1.15] tracking-tight sm:text-3xl md:text-4xl lg:text-5xl"
-              style={{ fontFamily: "'AritaDotumKR', sans-serif", fontWeight: 300 }}
+              style={{ fontFamily: "var(--font-display)", letterSpacing: "-0.02em", fontWeight: 300 }}
             >
               {selectedFilm.section2.heading.map((line, i) => (
                 <span key={i}>
@@ -397,7 +397,7 @@ export default function Home() {
                 {metaItems.map((value, i, arr) => (
                   <span key={value} className="flex items-center gap-x-2">
                     <span
-                      style={{ fontFamily: "'AritaDotumKR', sans-serif", fontWeight: 400 }}
+                      style={{ fontFamily: "var(--font-display)", letterSpacing: "-0.02em", fontWeight: 400 }}
                     >
                       {value}
                     </span>
@@ -410,7 +410,7 @@ export default function Home() {
             {selectedFilm.section2.synopsis && (
               <p
                 className="mt-5 max-w-prose text-sm leading-relaxed text-black/80 md:mt-6 md:text-[15px]"
-                style={{ fontFamily: "'AritaBuriKR', sans-serif", fontWeight: 400 }}
+                style={{ fontFamily: "var(--font-body)", fontWeight: 400 }}
               >
                 {selectedFilm.section2.synopsis}
               </p>
@@ -421,7 +421,7 @@ export default function Home() {
             href={selectedFilm.section2.href}
             onClick={handleCtaClick}
             className="group mt-8 flex items-center gap-4 text-sm font-bold tracking-widest"
-            style={{ fontFamily: "'AritaBuriKR', sans-serif", fontWeight: 400 }}
+            style={{ fontFamily: "var(--font-body)", fontWeight: 400 }}
           >
             <span className="transition-transform duration-300 group-hover:translate-x-2">
               <svg

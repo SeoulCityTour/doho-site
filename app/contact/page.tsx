@@ -16,7 +16,7 @@ export default function Contact() {
         <div className="flex -translate-y-4 flex-col items-start gap-4 md:translate-y-0">
           <h1
             className="text-[5vw] uppercase leading-[1.1] tracking-tight sm:text-3xl md:text-4xl lg:text-5xl"
-            style={{ fontFamily: "'AritaDotumKR', sans-serif", fontWeight: 500 }}
+            style={{ fontFamily: "var(--font-display)", letterSpacing: "-0.02em", fontWeight: 500 }}
           >
             문의
           </h1>
@@ -25,7 +25,7 @@ export default function Contact() {
             href={`mailto:${email}`}
             className="group flex items-center gap-3 text-base tracking-tight text-white/90 transition-colors hover:text-white sm:text-lg md:text-xl"
             style={{
-              fontFamily: "'AritaBuriKR', sans-serif",
+              fontFamily: "var(--font-body)",
               fontWeight: 300,
             }}
           >
@@ -49,7 +49,7 @@ export default function Contact() {
             href={`tel:${phone}`}
             className="group flex items-center gap-3 text-base tracking-tight text-white/90 transition-colors hover:text-white sm:text-lg md:text-xl"
             style={{
-              fontFamily: "'AritaBuriKR', sans-serif",
+              fontFamily: "var(--font-body)",
               fontWeight: 300,
             }}
           >
@@ -71,7 +71,7 @@ export default function Contact() {
 
           <p
             className="mt-2 max-w-xs text-sm leading-relaxed text-white/60"
-            style={{ fontFamily: "'AritaBuriKR', sans-serif", fontWeight: 300 }}
+            style={{ fontFamily: "var(--font-body)", fontWeight: 300 }}
           >
             {address}
           </p>
